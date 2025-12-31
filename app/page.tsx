@@ -104,7 +104,7 @@ export default function HomePage() {
         {!isLoading && resumes?.length === 0 && (
           <div className="flex flex-col items-center justify-center mt-10 gap-4">
             <Link href="/upload">
-              <Button className="primary-gradient text-white text-xl font-semibold px-8 py-6 rounded-full">
+              <Button className="text-xl font-semibold px-8 py-6 rounded-full">
                 <Upload className="w-5 h-5 mr-2" />
                 Upload Resume
               </Button>

@@ -52,7 +52,7 @@ function AuthContent() {
           </Button>
         ) : (
           <Button
-            className="w-full py-6 text-lg primary-gradient text-white"
+            className="w-full py-6 text-lg"
             onClick={auth.signIn}
           >
             Log in with Puter

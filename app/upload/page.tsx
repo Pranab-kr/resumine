@@ -119,17 +119,40 @@ export default function UploadPage() {
           ? feedBack.message.content
           : feedBack.message.content[0].text;
 
-      console.log("Parsing feedback:", feedbackText);
+      console.log("Raw feedback:", feedbackText);
+
+      // Clean up the response - remove markdown code blocks if present
+      let cleanedFeedback = feedbackText.trim();
+      if (cleanedFeedback.startsWith("```json")) {
+        cleanedFeedback = cleanedFeedback.slice(7);
+      } else if (cleanedFeedback.startsWith("```")) {
+        cleanedFeedback = cleanedFeedback.slice(3);
+      }
+      if (cleanedFeedback.endsWith("```")) {
+        cleanedFeedback = cleanedFeedback.slice(0, -3);
+      }
+      cleanedFeedback = cleanedFeedback.trim();
+
+      console.log("Cleaned feedback:", cleanedFeedback);
       const updatedData = {
         ...data,
-        feedback: JSON.parse(feedbackText),
+        feedback: JSON.parse(cleanedFeedback),
       };
       await kv.set(`resume:${uuid}`, JSON.stringify(updatedData));
       setStatusText("Analysis complete, redirecting...");
       router.push(`/resume/${uuid}`);
     } catch (error) {
       console.error("Error during resume analysis:", error);
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      let errorMessage = "Something went wrong. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === "object" && error !== null) {
+        // Handle Puter.js error objects
+        const errObj = error as Record<string, unknown>;
+        errorMessage = errObj.message as string || errObj.error as string || JSON.stringify(error);
+      } else {
+        errorMessage = String(error);
+      }
       setStatusText(`Error: ${errorMessage}`);
       setHasError(true);
     }
@@ -190,7 +213,7 @@ export default function UploadPage() {
               <p className="text-xl text-destructive">{statusText}</p>
               <Button
                 onClick={handleReset}
-                className="primary-gradient text-white rounded-full px-8 py-4"
+                className="rounded-full px-8 py-4"
               >
                 Try Again
               </Button>
@@ -245,7 +268,7 @@ export default function UploadPage() {
                   </div>
 
                   <Button
-                    className="primary-gradient text-white rounded-full py-6 text-lg"
+                    className="rounded-full py-6 text-lg"
                     type="submit"
                     disabled={!file}
                   >

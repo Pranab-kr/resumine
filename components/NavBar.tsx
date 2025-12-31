@@ -1,19 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { Moon, Sun, Upload } from "lucide-react";
+import { Moon, Sun, Upload, Settings, LogOut } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { usePuterStore } from "@/lib/puter-store";
 
 export default function NavBar() {
   const { theme, setTheme } = useTheme();
+  const { auth } = usePuterStore();
 
   return (
     <nav className="navbar">
       <Link href="/">
         <p className="text-2xl font-bold text-gradient">RESUMINE</p>
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
+        <Link href="/settings">
+          <Button variant="ghost" size="icon">
+            <Settings className="h-5 w-5" />
+            <span className="sr-only">Settings</span>
+          </Button>
+        </Link>
         <Button
           variant="ghost"
           size="icon"
@@ -23,8 +31,19 @@ export default function NavBar() {
           <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
+        {auth.isAuthenticated && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={auth.signOut}
+            title="Logout"
+          >
+            <LogOut className="h-5 w-5" />
+            <span className="sr-only">Logout</span>
+          </Button>
+        )}
         <Link href="/upload">
-          <Button className="primary-gradient text-white rounded-full px-4 py-2">
+          <Button className="rounded-full px-5">
             <Upload className="w-4 h-4 mr-2" />
             Upload Resume
           </Button>

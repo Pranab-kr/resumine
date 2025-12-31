@@ -154,8 +154,11 @@
   }
 
   .inset-shadow {
-    box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
-    backdrop-filter: blur(10px);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .inset-shadow {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   }
 
   .main-section {

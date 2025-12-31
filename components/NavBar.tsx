@@ -5,6 +5,7 @@ import { Moon, Sun, Upload, Settings, LogOut } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { usePuterStore } from "@/lib/puter-store";
+import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 export default function NavBar() {
   const { theme, setTheme } = useTheme();
@@ -31,22 +32,11 @@ export default function NavBar() {
           <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
-        {auth.isAuthenticated && (
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={auth.signOut}
-            title="Logout"
-          >
-            <LogOut className="h-5 w-5" />
-            <span className="sr-only">Logout</span>
-          </Button>
-        )}
         <Link href="/upload">
-          <Button className="rounded-full px-5">
+          <HoverBorderGradient className="flex items-center rounded-full px-5">
             <Upload className="w-4 h-4 mr-2" />
             Upload Resume
-          </Button>
+          </HoverBorderGradient>
         </Link>
       </div>
     </nav>

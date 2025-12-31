@@ -18,7 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { ArrowLeft, Trash2, Loader2, FileText, CheckCircle } from "lucide-react";
+import { ArrowLeft, Trash2, Loader2, FileText, CheckCircle, LogOut } from "lucide-react";
 import type { FSItem } from "@/types";
 
 export default function SettingsPage() {
@@ -116,10 +116,18 @@ export default function SettingsPage() {
               <CardTitle>Account</CardTitle>
               <CardDescription>Your Puter account information</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
               <p className="text-lg">
                 Logged in as: <span className="font-semibold">{auth.user?.username}</span>
               </p>
+              <Button
+                variant="outline"
+                className="w-full gap-2"
+                onClick={auth.signOut}
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </Button>
             </CardContent>
           </Card>
 

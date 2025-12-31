@@ -6,6 +6,7 @@ import { usePuterStore } from "@/lib/puter-store";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 function AuthContent() {
   const { isLoading, auth, init, puterReady } = usePuterStore();

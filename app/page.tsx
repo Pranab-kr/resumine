@@ -8,8 +8,10 @@ import { usePuterStore } from "@/lib/puter-store";
 import NavBar from "@/components/NavBar";
 import ResumeCard from "@/components/ResumeCard";
 import { Button } from "@/components/ui/button";
+import { GridBackground } from "@/components/GridBackground";
 import { Upload, Loader2 } from "lucide-react";
 import type { Resume, KVItem } from "@/types";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export default function HomePage() {
   const { auth, kv, init, isLoading: puterLoading, puterReady } = usePuterStore();
@@ -49,69 +51,73 @@ export default function HomePage() {
 
   if (!puterReady || puterLoading) {
     return (
-      <main className="min-h-screen pt-10">
-        <NavBar />
-        <section className="main-section">
-          <div className="flex flex-col items-center justify-center py-16">
-            <Loader2 className="w-12 h-12 animate-spin text-primary" />
-            <p className="mt-4 text-muted-foreground">Loading...</p>
-          </div>
-        </section>
-      </main>
+      <GridBackground>
+        <main className="min-h-screen pt-10">
+          <NavBar />
+          <section className="main-section">
+            <div className="flex flex-col items-center justify-center py-16">
+              <Loader2 className="w-12 h-12 animate-spin text-primary" />
+              <p className="mt-4 text-muted-foreground">Loading...</p>
+            </div>
+          </section>
+        </main>
+      </GridBackground>
     );
   }
 
   return (
-    <main className="min-h-screen pt-10">
-      <NavBar />
-      <section className="main-section">
-        <div className="page-heading py-16">
-          <h1 className="max-sm:text-4xl text-6xl text-gradient leading-tight font-semibold">
-            Track Your Application & Resume Rating
-          </h1>
-          {!isLoading && resumes?.length === 0 ? (
-            <p className="text-xl text-muted-foreground">
-              No resume found. Upload Your First resume to get feedback.
-            </p>
-          ) : (
-            <p className="text-xl text-muted-foreground">
-              Review your Submission and check AI-powered Feedback
-            </p>
+    <GridBackground>
+      <main className="min-h-screen pt-10">
+        <NavBar />
+        <section className="main-section">
+          <div className="page-heading py-16">
+            <h1 className="max-sm:text-4xl text-6xl text-gradient leading-tight font-semibold">
+              Track Your Application & Resume Rating
+            </h1>
+            {!isLoading && resumes?.length === 0 ? (
+              <p className="text-xl text-muted-foreground">
+                No resume found. Upload Your First resume to get feedback.
+              </p>
+            ) : (
+              <p className="text-xl text-muted-foreground">
+                Review your Submission and check AI-powered Feedback
+              </p>
+            )}
+          </div>
+
+          {isLoading && (
+            <div className="flex flex-col items-center justify-center">
+              <Image
+                src="/images/resume-scan-2.gif"
+                alt="Loading"
+                width={200}
+                height={200}
+                className="w-[200px]"
+                unoptimized
+              />
+            </div>
           )}
-        </div>
 
-        {isLoading && (
-          <div className="flex flex-col items-center justify-center">
-            <Image
-              src="/images/resume-scan-2.gif"
-              alt="Loading"
-              width={200}
-              height={200}
-              className="w-[200px]"
-              unoptimized
-            />
-          </div>
-        )}
+          {!isLoading && resumes.length > 0 && (
+            <div className="resumes-section">
+              {resumes.map((resume) => (
+                <ResumeCard key={resume.id} resume={resume} />
+              ))}
+            </div>
+          )}
 
-        {!isLoading && resumes.length > 0 && (
-          <div className="resumes-section">
-            {resumes.map((resume) => (
-              <ResumeCard key={resume.id} resume={resume} />
-            ))}
-          </div>
-        )}
-
-        {!isLoading && resumes?.length === 0 && (
-          <div className="flex flex-col items-center justify-center mt-10 gap-4">
-            <Link href="/upload">
-              <Button className="text-xl font-semibold px-8 py-6 rounded-full">
-                <Upload className="w-5 h-5 mr-2" />
-                Upload Resume
-              </Button>
-            </Link>
-          </div>
-        )}
-      </section>
-    </main>
+          {!isLoading && resumes?.length === 0 && (
+            <div className="flex flex-col items-center justify-center mt-10 gap-4">
+              <Link href="/upload">
+                <HoverBorderGradient className="text-xl flex items-center font-semibold px-8 py-4 rounded-full">
+                  <Upload className="w-5 h-5 mr-2" />
+                  Upload Resume
+                </HoverBorderGradient>
+              </Link>
+            </div>
+          )}
+        </section>
+      </main>
+    </GridBackground>
   );
 }

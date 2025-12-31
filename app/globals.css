@@ -186,7 +186,7 @@
   }
 
   .navbar {
-    @apply flex flex-row justify-between items-center bg-card rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto border;
+    @apply flex flex-row justify-between items-center bg-card rounded-full p-2 w-full px-10 max-w-[1200px] mx-auto border;
   }
 
   .resume-nav {

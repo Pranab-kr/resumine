@@ -54,8 +54,8 @@ interface CategoryHeaderProps {
 
 const CategoryHeader = ({ title, categoryScore }: CategoryHeaderProps) => {
   return (
-    <div className="flex flex-row gap-4 items-center py-2">
-      <p className="text-xl font-semibold">{title}</p>
+    <div className="flex flex-row gap-2 md:gap-4 items-center py-2">
+      <p className="text-lg md:text-xl font-semibold">{title}</p>
       <DetailScoreBadge score={categoryScore} />
     </div>
   );
@@ -74,15 +74,15 @@ interface CategoryContentProps {
 const CategoryContent = ({ tips }: CategoryContentProps) => {
   return (
     <div className="flex flex-col gap-4 items-center w-full">
-      <div className="bg-muted w-full rounded-lg px-5 py-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="bg-muted w-full rounded-lg px-3 md:px-5 py-3 md:py-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
         {tips.map((tip, index) => (
           <div className="flex flex-row gap-2 items-center" key={index}>
             {tip.type === "good" ? (
-              <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <Check className="w-4 h-4 md:w-5 md:h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
             ) : (
-              <AlertTriangle className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+              <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
             )}
-            <p className="text-muted-foreground">{tip.tip}</p>
+            <p className="text-sm md:text-base text-muted-foreground">{tip.tip}</p>
           </div>
         ))}
       </div>

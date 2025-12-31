@@ -77,16 +77,16 @@ export default function ResumePage({ params }: ResumePageProps) {
       </nav>
 
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
-        <section className="feedback-section sticky top-0 items-center justify-center">
+        <section className="feedback-section lg:sticky lg:top-0 items-center justify-center">
           {imageUrl && resumeUrl ? (
-            <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-fit w-fit">
+            <div className="animate-in fade-in duration-1000 gradient-border m-0 h-fit w-fit max-w-full">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={imageUrl}
                   alt="Resume preview"
                   width={500}
                   height={700}
-                  className="w-full h-full object-contain rounded-2xl"
+                  className="w-full h-auto object-contain rounded-2xl"
                 />
               </a>
             </div>
@@ -97,7 +97,7 @@ export default function ResumePage({ params }: ResumePageProps) {
           )}
         </section>
         <section className="feedback-section">
-          <h2 className="text-4xl font-bold">Resume Review</h2>
+          <h2 className="text-2xl md:text-4xl font-bold">Resume Review</h2>
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
               <Summary feedback={feedback} />

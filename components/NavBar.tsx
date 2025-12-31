@@ -14,9 +14,9 @@ export default function NavBar() {
   return (
     <nav className="navbar">
       <Link href="/">
-        <p className="text-2xl font-bold text-gradient">RESUMINE</p>
+        <p className="text-xl md:text-2xl font-bold text-gradient">RESUMINE</p>
       </Link>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 md:gap-2">
         <Button
           variant="ghost"
           size="icon"
@@ -33,9 +33,9 @@ export default function NavBar() {
           </Button>
         </Link>
         <Link href="/upload">
-          <HoverBorderGradient className="flex items-center rounded-full px-5">
-            <Upload className="w-4 h-4 mr-2" />
-            Upload Resume
+          <HoverBorderGradient className="flex items-center rounded-full px-3 md:px-5">
+            <Upload className="w-4 h-4 md:mr-2" />
+            <span className="hidden md:inline">Upload Resume</span>
           </HoverBorderGradient>
         </Link>
       </div>

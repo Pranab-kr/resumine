@@ -101,10 +101,10 @@ export default function SettingsPage() {
       <NavBar />
       <section className="main-section">
         <div className="page-heading">
-          <h1 className="max-sm:text-4xl text-6xl text-gradient leading-tight font-semibold">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl text-gradient leading-tight font-semibold">
             Settings
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base md:text-xl text-muted-foreground">
             Manage your account and data
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function SettingsPage() {
               <CardDescription>Your Puter account information</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-lg">
+              <p className="text-base md:text-lg break-words">
                 Logged in as: <span className="font-semibold">{auth.user?.username}</span>
               </p>
               <Button

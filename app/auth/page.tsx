@@ -26,25 +26,25 @@ function AuthContent() {
   return (
     <Card className="w-full max-w-md mx-4">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold">Welcome</CardTitle>
-        <CardDescription className="text-lg">
+        <CardTitle className="text-2xl md:text-3xl font-bold">Welcome</CardTitle>
+        <CardDescription className="text-base md:text-lg">
           Log In to Continue Your Job Journey
         </CardDescription>
       </CardHeader>
       <CardContent>
         {!puterReady ? (
-          <Button className="w-full py-6 text-lg" disabled>
+          <Button className="w-full py-4 md:py-6 text-base md:text-lg" disabled>
             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             Loading...
           </Button>
         ) : isLoading ? (
-          <Button className="w-full py-6 text-lg" disabled>
+          <Button className="w-full py-4 md:py-6 text-base md:text-lg" disabled>
             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             Signing you in...
           </Button>
         ) : auth.isAuthenticated ? (
           <Button
-            className="w-full py-6 text-lg"
+            className="w-full py-4 md:py-6 text-base md:text-lg"
             variant="destructive"
             onClick={auth.signOut}
           >
@@ -52,7 +52,7 @@ function AuthContent() {
           </Button>
         ) : (
           <Button
-            className="w-full py-6 text-lg"
+            className="w-full py-4 md:py-6 text-base md:text-lg"
             onClick={auth.signIn}
           >
             Log in with Puter
@@ -69,13 +69,13 @@ export default function AuthPage() {
       <Suspense fallback={
         <Card className="w-full max-w-md mx-4">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold">Welcome</CardTitle>
-            <CardDescription className="text-lg">
+            <CardTitle className="text-2xl md:text-3xl font-bold">Welcome</CardTitle>
+            <CardDescription className="text-base md:text-lg">
               Log In to Continue Your Job Journey
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button className="w-full py-6 text-lg" disabled>
+            <Button className="w-full py-4 md:py-6 text-base md:text-lg" disabled>
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               Loading...
             </Button>

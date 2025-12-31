@@ -190,12 +190,12 @@ export default function UploadPage() {
       <NavBar />
       <section className="main-section">
         <div className="page-heading py-8">
-          <h1 className="max-sm:text-4xl text-6xl text-gradient leading-tight font-semibold">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl text-gradient leading-tight font-semibold">
             Smart Feedback for Your Dream Job
           </h1>
           {isProcessing && !hasError ? (
             <>
-              <div className="flex items-center gap-2 text-xl text-muted-foreground">
+              <div className="flex items-center gap-2 text-base md:text-xl text-muted-foreground">
                 <Loader2 className="w-5 h-5 animate-spin" />
                 {statusText}
               </div>
@@ -219,14 +219,14 @@ export default function UploadPage() {
               </Button>
             </div>
           ) : (
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base md:text-xl text-muted-foreground">
               Drop Your resume for an ATS score and improvement tips
             </p>
           )}
 
           {!isProcessing && !hasError && (
             <Card className="w-full max-w-2xl">
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 px-4 md:px-6">
                 <form
                   id="upload-form"
                   onSubmit={handleSubmit}

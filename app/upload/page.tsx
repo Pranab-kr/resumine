@@ -268,6 +268,7 @@ export default function UploadPage() {
                   </div>
 
                   <Button
+                  variant={"default"}
                     className="rounded-full py-6 text-lg"
                     type="submit"
                     disabled={!file}

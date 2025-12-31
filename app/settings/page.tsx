@@ -100,7 +100,7 @@ export default function SettingsPage() {
     <main className="min-h-screen pt-10">
       <NavBar />
       <section className="main-section">
-        <div className="page-heading py-8">
+        <div className="page-heading">
           <h1 className="max-sm:text-4xl text-6xl text-gradient leading-tight font-semibold">
             Settings
           </h1>
@@ -109,7 +109,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="w-full max-w-2xl space-y-6">
+        <div className="w-full max-w-2xl pt-10 space-y-6">
           {/* User Info */}
           <Card>
             <CardHeader>

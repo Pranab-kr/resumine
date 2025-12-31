@@ -1,9 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Resume Tracker & ATS Analyzer
 
-## Getting Started
+A modern web application for tracking job applications and analyzing resume compatibility with Applicant Tracking Systems (ATS). Get AI-powered feedback on your resumes and improve your chances of landing interviews.
 
-First, run the development server:
+## ✨ Features
 
+- 📄 **Resume Upload & Management** - Upload and store multiple resumes
+- 🎯 **ATS Score Analysis** - Get detailed ATS compatibility scores for your resumes
+- 🤖 **AI-Powered Feedback** - Receive intelligent suggestions to improve your resume
+- 📊 **Visual Analytics** - View scores with interactive charts and gauges
+- 🔐 **Secure Authentication** - Built with Puter authentication system
+- 🌓 **Dark Mode** - Beautiful UI with full dark mode support
+- 💾 **Cloud Storage** - Resumes stored securely using Puter KV store
+- 📱 **Responsive Design** - Works seamlessly on all devices
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Language:** TypeScript
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Styling:** Tailwind CSS v4
+- **State Management:** Zustand
+- **Authentication & Storage:** [Puter](https://puter.com/)
+- **PDF Processing:** PDF.js
+- **Charts:** Recharts
+- **Icons:** Lucide React
+- **Animations:** Motion (Framer Motion)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 20.x or higher
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd next-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
@@ -14,23 +63,95 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+next-app/
+├── app/                    # Next.js app directory
+│   ├── auth/              # Authentication page
+│   ├── resume/[id]/       # Individual resume details
+│   ├── settings/          # User settings
+│   ├── upload/            # Resume upload page
+│   └── page.tsx           # Home page
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── NavBar.tsx        # Navigation component
+│   ├── ResumeCard.tsx    # Resume display card
+│   ├── ScoreGauge.tsx    # ATS score visualization
+│   └── ...
+├── lib/                   # Utility functions
+│   ├── puter-store.ts    # Puter integration
+│   ├── pdf2img.ts        # PDF processing
+│   └── utils.ts          # Helper functions
+└── types/                 # TypeScript type definitions
+```
 
-## Learn More
+## 🎨 Features in Detail
 
-To learn more about Next.js, take a look at the following resources:
+### Resume Analysis
+- Upload resumes in various formats
+- Automatic ATS scoring
+- Detailed breakdown of strengths and weaknesses
+- Actionable improvement suggestions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Dashboard
+- View all uploaded resumes at a glance
+- Quick access to scores and feedback
+- Sort and filter resumes
+- Beautiful grid background with fade effects
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### User Experience
+- Smooth animations and transitions
+- Loading states with visual feedback
+- Toast notifications for user actions
+- Intuitive navigation
 
-## Deploy on Vercel
+## 🧩 Key Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **GridBackground** - Animated grid background pattern
+- **ScoreGauge** - Visual ATS score display
+- **FileUploader** - Drag-and-drop resume upload
+- **ResumeCard** - Resume preview cards
+- **NavBar** - Navigation with theme toggle
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## 🔒 Authentication
+
+This app uses Puter for authentication and data storage. Users need to sign in to:
+- Upload resumes
+- View their resume history
+- Access ATS scores and feedback
+
+## 🌐 Deployment
+
+The app can be deployed on any platform that supports Next.js:
+
+- [Vercel](https://vercel.com/) (Recommended)
+- [Netlify](https://www.netlify.com/)
+- [Railway](https://railway.app/)
+- Self-hosted
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+- Powered by [Puter](https://puter.com/)

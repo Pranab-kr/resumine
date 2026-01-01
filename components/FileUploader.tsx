@@ -46,7 +46,7 @@ export default function FileUploader({ onFileSelect }: FileUploaderProps) {
               className="uploader-selected-file"
               onClick={(e) => e.stopPropagation()}
             >
-              <FileText className="h-8 w-8 md:h-10 md:w-10 text-primary flex-shrink-0" />
+              <FileText className="h-8 w-8 md:h-10 md:w-10 text-primary shrink-0" />
               <div className="flex items-center space-x-2 md:space-x-3 flex-1 ml-2 md:ml-3 min-w-0">
                 <div className="min-w-0">
                   <p className="text-xs md:text-sm font-medium truncate">
@@ -59,7 +59,7 @@ export default function FileUploader({ onFileSelect }: FileUploaderProps) {
               </div>
               <button
                 type="button"
-                className="p-2 cursor-pointer hover:bg-accent rounded-full flex-shrink-0"
+                className="p-2 cursor-pointer hover:bg-accent rounded-full shrink-0"
                 onClick={handleClearFile}
               >
                 <X className="w-4 h-4" />

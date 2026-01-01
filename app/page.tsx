@@ -7,14 +7,19 @@ import Image from "next/image";
 import { usePuterStore } from "@/lib/puter-store";
 import NavBar from "@/components/NavBar";
 import ResumeCard from "@/components/ResumeCard";
-import { Button } from "@/components/ui/button";
 import { GridBackground } from "@/components/GridBackground";
 import { Upload, Loader2 } from "lucide-react";
 import type { Resume, KVItem } from "@/types";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export default function HomePage() {
-  const { auth, kv, init, isLoading: puterLoading, puterReady } = usePuterStore();
+  const {
+    auth,
+    kv,
+    init,
+    isLoading: puterLoading,
+    puterReady,
+  } = usePuterStore();
   const router = useRouter();
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +41,8 @@ export default function HomePage() {
       setIsLoading(true);
       const resumeList = (await kv.list("resume:*", true)) as KVItem[];
 
-      const parsedResumes: Resume[] = resumeList?.map(
-        (resume) => JSON.parse(resume.value) as Resume
-      ) || [];
+      const parsedResumes: Resume[] =
+        resumeList?.map((resume) => JSON.parse(resume.value) as Resume) || [];
 
       setResumes(parsedResumes);
       setIsLoading(false);

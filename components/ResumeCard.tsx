@@ -59,7 +59,7 @@ export default function ResumeCard({ resume }: ResumeCardProps) {
               alt="resume"
               width={400}
               height={350}
-              className="w-full h-[350px] max-sm:h-[200px] object-cover object-top rounded-xl"
+              className="w-full h-[350px] max-sm:h-[350px] object-cover object-top rounded-xl"
             />
           </div>
         </div>

@@ -141,7 +141,17 @@
 /* Custom component styles */
 @layer components {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-primary to-[#8E97C5];
+    background: linear-gradient(to right, #AB8C95, #E8E8EA, #8E97C5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .text-gradient {
+    background: linear-gradient(to right, #AB8C95, #E8E8EA, #8E97C5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .gradient-border {

@@ -23,7 +23,15 @@ interface AnalyzeParams {
 }
 
 export default function UploadPage() {
-  const { auth, isLoading: puterLoading, fs, ai, kv, init, puterReady } = usePuterStore();
+  const {
+    auth,
+    isLoading: puterLoading,
+    fs,
+    ai,
+    kv,
+    init,
+    puterReady,
+  } = usePuterStore();
   const router = useRouter();
 
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -57,7 +65,9 @@ export default function UploadPage() {
       console.log("Upload result:", uploadedFile);
 
       if (!uploadedFile) {
-        setStatusText("Error: Failed to upload the File. Please make sure you are logged in.");
+        setStatusText(
+          "Error: Failed to upload the File. Please make sure you are logged in.",
+        );
         setHasError(true);
         return;
       }
@@ -99,12 +109,14 @@ export default function UploadPage() {
       console.log("Saving initial data:", data);
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
-      setStatusText("Analyzing your resume with AI (this may take a minute)...");
+      setStatusText(
+        "Analyzing your resume with AI (this may take a minute)...",
+      );
       console.log("Calling AI feedback...");
 
       const feedBack = await ai.feedback(
         uploadedFile.path,
-        prepareInstructions({ jobTitle, jobDescription })
+        prepareInstructions({ jobTitle, jobDescription }),
       );
       console.log("AI feedback result:", feedBack);
 
@@ -149,7 +161,10 @@ export default function UploadPage() {
       } else if (typeof error === "object" && error !== null) {
         // Handle Puter.js error objects
         const errObj = error as Record<string, unknown>;
-        errorMessage = errObj.message as string || errObj.error as string || JSON.stringify(error);
+        errorMessage =
+          (errObj.message as string) ||
+          (errObj.error as string) ||
+          JSON.stringify(error);
       } else {
         errorMessage = String(error);
       }
@@ -211,10 +226,7 @@ export default function UploadPage() {
           ) : hasError ? (
             <div className="flex flex-col items-center gap-4">
               <p className="text-xl text-destructive">{statusText}</p>
-              <Button
-                onClick={handleReset}
-                className="rounded-full px-8 py-4"
-              >
+              <Button onClick={handleReset} className="rounded-full px-8 py-4">
                 Try Again
               </Button>
             </div>
@@ -268,7 +280,7 @@ export default function UploadPage() {
                   </div>
 
                   <Button
-                  variant={"default"}
+                    variant={"default"}
                     className="rounded-full py-6 text-lg"
                     type="submit"
                     disabled={!file}
